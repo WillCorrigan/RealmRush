@@ -974,8 +974,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bb2f436d4a72c3344a0f240d34c71279, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  startWaypoint: {fileID: 1369142217}
-  endWaypoint: {fileID: 1042962642}
+  startWaypoint: {fileID: 1312292862}
+  endWaypoint: {fileID: 1992300184}
 --- !u!114 &1573161137 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 2448874162739616840, guid: 03f03203020a24040852d8949802ca22,
