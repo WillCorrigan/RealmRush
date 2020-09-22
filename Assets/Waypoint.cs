@@ -4,7 +4,9 @@ using UnityEngine;
 
 public class Waypoint : MonoBehaviour
 {
+    // public ok here as is a data class
     public bool isExplored = false;
+    public Waypoint exploredFrom;
 
     Vector2Int gridPos;
 
@@ -28,5 +30,13 @@ public class Waypoint : MonoBehaviour
     {
         MeshRenderer topMeshRenderer = transform.Find("Top").GetComponent<MeshRenderer>();
         topMeshRenderer.material.color = color;
+    }
+
+    void Update()
+    {
+        if (isExplored)
+        {
+            SetTopColor(Color.blue);
+        }
     }
 }
