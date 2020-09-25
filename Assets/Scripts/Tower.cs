@@ -21,6 +21,6 @@ public class Tower : MonoBehaviour
         var spawn = transform.Find("Tower_A_Top");
         GameObject bullet = Instantiate(bulletPrefab, spawn.transform.position, Quaternion.identity) as GameObject;
         bullet.GetComponent<Rigidbody>().AddForce(transform.forward * 10);
-        yield return null;
+        yield return new WaitForSeconds(3);
     }
 }
