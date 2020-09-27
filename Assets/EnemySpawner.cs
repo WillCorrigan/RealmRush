@@ -4,24 +4,24 @@ using UnityEngine;
 
 public class EnemySpawner : MonoBehaviour
 {
-    [SerializeField] float secondBetweenSpawns = 1f;
+    [SerializeField] float secondsBetweenSpawns = 1f;
     [SerializeField] int enemiesToSpawn = 5;
     [SerializeField] GameObject enemyPrefab;
 
     // Start is called before the first frame update
     void Start()
     {
-        StartCoroutine(Spawning());
+        StartCoroutine(RepeatedlySpawnEnemies());
     }
 
 
-    IEnumerator Spawning()
+    IEnumerator RepeatedlySpawnEnemies()
     {
         for (int i = 0; i < enemiesToSpawn; i++)
         {
             var newEnemy = Instantiate(enemyPrefab, transform.position, Quaternion.identity);
             newEnemy.transform.parent = gameObject.transform;
-            yield return new WaitForSeconds(secondBetweenSpawns);
+            yield return new WaitForSeconds(secondsBetweenSpawns);
         }
     }
 }
