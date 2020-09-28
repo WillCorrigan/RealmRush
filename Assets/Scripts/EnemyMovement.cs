@@ -5,6 +5,9 @@ using UnityEngine;
 
 public class EnemyMovement : MonoBehaviour
 {
+    [SerializeField] float enemyMoveSpeed = 0.5f;
+    [SerializeField] ParticleSystem goalParticlePrefab;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -19,8 +22,21 @@ public class EnemyMovement : MonoBehaviour
         foreach (Waypoint waypoint in path)
         {
             transform.position = waypoint.transform.position;
-            yield return new WaitForSeconds(1f);
+            yield return new WaitForSeconds(enemyMoveSpeed);
         }
-        print("Ending patrol");
-        }
+
+        KillEnemy();
     }
+
+
+    private void KillEnemy()
+    {
+        var deathAnimation = Instantiate(goalParticlePrefab, transform.position, Quaternion.identity);
+        deathAnimation.Play();
+        float destroyDelay = deathAnimation.main.duration;
+        Destroy(deathAnimation.gameObject, destroyDelay);
+        Destroy(gameObject);
+    }
+}
+
+

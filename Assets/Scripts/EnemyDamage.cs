@@ -9,11 +9,6 @@ public class EnemyDamage : MonoBehaviour
     [SerializeField] ParticleSystem hitParticlePrefab;
     [SerializeField] ParticleSystem deathParticlePrefab;
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
 
     private void OnParticleCollision(GameObject other)
     {
@@ -35,6 +30,8 @@ public class EnemyDamage : MonoBehaviour
     {
         var deathAnimation = Instantiate(deathParticlePrefab, transform.position, Quaternion.identity);
         deathAnimation.Play();
+        float destroyDelay = deathAnimation.main.duration;
+        Destroy(deathAnimation.gameObject, destroyDelay);
         Destroy(gameObject);
     }
 
