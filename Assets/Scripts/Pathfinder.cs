@@ -12,6 +12,7 @@ public class Pathfinder : MonoBehaviour
     List<Waypoint> path = new List<Waypoint>();
 
     [SerializeField] Waypoint startWaypoint, endWaypoint;
+    [SerializeField] Mesh enemyPathMesh;
 
 
     Vector2Int[] directions =
@@ -36,6 +37,22 @@ public class Pathfinder : MonoBehaviour
         LoadBlocks();
         BreadthFirstSearch();
         CreatePath();
+        ColorTopOfPath();
+    }
+
+    private void ColorTopOfPath()
+    {
+        foreach (Waypoint waypoint in path)
+        {
+            foreach(Transform child in waypoint.transform)
+            {
+                if (child.name == "Block_Friendly")
+                {
+                    child.GetComponent<MeshFilter>().mesh = enemyPathMesh;
+                }
+            }
+ 
+        }
     }
 
     private void CreatePath()
@@ -133,6 +150,6 @@ public class Pathfinder : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+
     }
 }
